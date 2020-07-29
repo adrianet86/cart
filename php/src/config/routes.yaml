@@ -1,0 +1,54 @@
+system_ready_get:
+  path: /system/ready
+  methods: GET
+  controller: App\Cart\Infrastructure\Api\System\ReadyGetController
+
+seller_post:
+  path: /seller
+  methods: POST
+  controller: App\Cart\Infrastructure\Api\Seller\PostSellerController
+
+seller_delete:
+  path: /seller/{id}
+  methods: DELETE
+  controller: App\Cart\Infrastructure\Api\Seller\DeleteSellerController
+
+product_seller_post:
+  path: /product-seller
+  methods: POST
+  controller: App\Cart\Infrastructure\Api\Product\PostProductSellerController
+
+product_seller_delete:
+  path: /product-seller/{id}
+  methods: DELETE
+  controller: App\Cart\Infrastructure\Api\Product\DeleteProductSellerController
+
+cart_delete:
+  path: /cart/{id}
+  methods: DELETE
+  controller: App\Cart\Infrastructure\Api\Cart\DeleteCartController
+
+cart_post_product:
+  path: /cart/{id}/product-seller/{productSellerId}
+  methods: POST
+  controller: App\Cart\Infrastructure\Api\Cart\PostProductToCartController
+
+cart_delete_product:
+  path: /cart/{id}/product-seller/{productSellerId}
+  methods: DELETE
+  controller: App\Cart\Infrastructure\Api\Cart\DeleteProductFromCartController
+
+cart_patch_product_units:
+  path: /cart/{id}/product-seller/{productSellerId}/units/{units}
+  methods: PATCH
+  controller: App\Cart\Infrastructure\Api\Cart\PatchProductUnitsToCartController
+
+cart_get_total_amount:
+  path: /cart/{id}/amount
+  methods: GET
+  controller: App\Cart\Infrastructure\Api\Cart\GetCartAmountController
+
+cart_patch_confirm:
+  path: /cart/{id}/confirm
+  methods: PATCH
+  controller: App\Cart\Infrastructure\Api\Cart\PatchCartConfirmController

@@ -1,0 +1,33 @@
+version: '3.3'
+services:
+  nginx:
+    build:
+      context: nginx
+      dockerfile: .docker/Dockerfile
+    image: ${NGINX_IMAGE}
+    container_name: ${NGINX_CONTAINER}
+    ports:
+      - 8080:80
+    depends_on:
+      - php
+    networks:
+      - internal_network
+  php:
+    build:
+      context: php
+      dockerfile: .docker/Dockerfile
+    image: ${PHP_IMAGE}
+    container_name: ${PHP_CONTAINER}
+    environment:
+      - APP_ENV=${PHP_ENVIRONMENT}
+    working_dir: /app
+    volumes:
+      - ./php/src:/app
+    ports:
+      - 9000:9000
+    networks:
+      - internal_network
+
+networks:
+  internal_network:
+    driver: bridge
